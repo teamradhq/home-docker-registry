@@ -1,0 +1,16 @@
+services:
+  registry:
+    image: registry:2
+    env_file:
+      - .env
+    environment:
+      - REGISTRY_PROXY_REMOTEURL=${REGISTRY_PROXY_REMOTEURL}
+      - REGISTRY_PROXY_USERNAME=${REGISTRY_PROXY_USERNAME}
+      - REGISTRY_PROXY_PASSWORD=${REGISTRY_PROXY_PASSWORD}
+    ports:
+      - 5001:5000
+    volumes:
+      - registry_data:/var/lib/registry
+
+volumes:
+  registry_data:
