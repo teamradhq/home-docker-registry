@@ -1,6 +1,7 @@
 services:
   registry:
     image: registry:2
+    platform: linux/amd64
     env_file:
       - .env
     environment:
@@ -11,6 +12,105 @@ services:
       - 5001:5000
     volumes:
       - registry_data:/var/lib/registry
+
+  harbor-db:
+    image: goharbor/harbor-db:v2.11.0
+    platform: linux/amd64
+    container_name: harbor-db
+    restart: always
+    volumes:
+      - ./storage/database:/var/lib/postgresql/data
+    networks:
+      - harbor
+
+  harbor-core:
+    image: goharbor/harbor-core:v2.11.0
+    platform: linux/amd64
+    container_name: harbor-core
+    restart: always
+    environment:
+      - CORE_SECRET=${CORE_SECRET}
+      - JOBSERVICE_SECRET=${JOBSERVICE_SECRET}
+      - REGISTRY_URL=http://registry:5000
+      - REGISTRY_CREDENTIAL_USERNAME=${REGISTRY_USERNAME:-admin}
+      - REGISTRY_CREDENTIAL_PASSWORD=${REGISTRY_PASSWORD:-Harbor12345}
+      - CACHE_DRIVER=redis
+      - CACHE_REDIS_ADDR=redis:6379
+      - CACHE_REDIS_DB=1
+      - CACHE_REDIS_POOL_SIZE=10
+      - _REDIS_URL_CORE=redis+sentinel://redis:16379/harbor?idle_timeout_seconds=30
+      - _REDIS_URL_REG=redis+sentinel://redis:16379/harbor/1?idle_timeout_seconds=30
+    depends_on:
+      - harbor-db
+      - registry
+      - redis
+    networks:
+      - harbor
+
+  harbor-portal:
+    image: goharbor/harbor-portal:v2.5.3
+    container_name: harbor-portal
+    platform: linux/amd64
+    restart: always
+    user: root
+    depends_on:
+      - harbor-core
+    networks:
+      - harbor
+
+  harbor-jobservice:
+    image: goharbor/harbor-jobservice:v2.11.0
+    platform: linux/amd64
+    container_name: harbor-jobservice
+    restart: always
+    environment:
+      - JOBSERVICE_SECRET=${JOBSERVICE_SECRET}
+    depends_on:
+      - harbor-core
+    networks:
+      - harbor
+
+  redis:
+    image: goharbor/redis-photon:v2.11.0
+    platform: linux/amd64
+    container_name: harbor-redis
+    restart: always
+    networks:
+      - harbor
+
+  harbor-log:
+    image: goharbor/harbor-log:v2.11.0
+    platform: linux/amd64
+    container_name: harbor-log
+    restart: always
+    volumes:
+      - ./storage/log/:/var/log/docker/:z
+    networks:
+      - harbor
+
+  harbor-nginx:
+    image: goharbor/nginx-photon:v2.5.3
+    container_name: harbor-nginx
+    platform: linux/amd64
+    restart: always
+    user: root
+    depends_on:
+      - harbor-core
+      - harbor-portal
+    volumes:
+      - ./storage/nginx/client_body_temp:/etc/nginx/client_body_temp
+      - ./storage/nginx/proxy_temp:/etc/nginx/proxy_temp
+      - ./storage/nginx/fastcgi_temp:/etc/nginx/fastcgi_temp
+      - ./storage/nginx/uwsgi_temp:/etc/nginx/uwsgi_temp
+    ports:
+      - "8080:8080"
+    networks:
+      - harbor
+
+
+networks:
+  harbor:
+    driver: bridge
 
 volumes:
   registry_data:
