@@ -31,7 +31,7 @@ TARGET_FILE="/etc/systemd/system/docker-registry.service"
 
 sed -e "s|{{WORKDIR}}|$WORKDIR|g" \
     -e "s|{{USER}}|$USER|g" \
-    -e "s|{{GROUP}}|$GROUP|g" \
+    -e "s|{{GROUP}}|docker|g" \
     "$TEMPLATE_FILE" | sudo tee "$TARGET_FILE" > /dev/null
 
 sudo chmod 644 "$TARGET_FILE"
