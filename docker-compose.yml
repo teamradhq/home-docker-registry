@@ -1,3 +1,5 @@
+version: '3.7'
+
 services:
   registry:
     image: registry:2
@@ -24,7 +26,10 @@ services:
       - harbor
 
   harbor-core:
-    image: goharbor/harbor-core:v2.11.0
+    build:
+      context: .
+      dockerfile: docker/harbor-core/Dockerfile
+    image: home/harbor-core
     platform: linux/amd64
     container_name: harbor-core
     restart: always
@@ -48,7 +53,10 @@ services:
       - harbor
 
   harbor-portal:
-    image: goharbor/harbor-portal:v2.5.3
+    build:
+      context: .
+      dockerfile: docker/harbor-portal/Dockerfile
+    image: home/harbor-portal
     container_name: harbor-portal
     platform: linux/amd64
     restart: always
@@ -59,16 +67,22 @@ services:
       - harbor
 
   harbor-jobservice:
-    image: goharbor/harbor-jobservice:v2.11.0
+    build:
+      context: .
+      dockerfile: docker/harbor-jobservice/Dockerfile
+    image: home/harbor-jobservice:v2.11.0
     platform: linux/amd64
     container_name: harbor-jobservice
     restart: always
     environment:
       - JOBSERVICE_SECRET=${JOBSERVICE_SECRET}
+      - SKIP_TLS_VERIFY=true
     depends_on:
       - harbor-core
     networks:
       - harbor
+    volumes:
+      - ./certs:/etc/harbor/ssl
 
   redis:
     image: goharbor/redis-photon:v2.11.0
@@ -79,7 +93,10 @@ services:
       - harbor
 
   harbor-log:
-    image: goharbor/harbor-log:v2.11.0
+    build:
+      context: .
+      dockerfile: docker/harbor-log/Dockerfile
+    image: home/harbor-log
     platform: linux/amd64
     container_name: harbor-log
     restart: always
@@ -89,7 +106,10 @@ services:
       - harbor
 
   harbor-nginx:
-    image: goharbor/nginx-photon:v2.5.3
+    build:
+      context: .
+      dockerfile: docker/harbor-nginx/Dockerfile
+    image: home/harbor-nginx:v2.11.0
     container_name: harbor-nginx
     platform: linux/amd64
     restart: always
@@ -97,16 +117,10 @@ services:
     depends_on:
       - harbor-core
       - harbor-portal
-    volumes:
-      - ./storage/nginx/client_body_temp:/etc/nginx/client_body_temp
-      - ./storage/nginx/proxy_temp:/etc/nginx/proxy_temp
-      - ./storage/nginx/fastcgi_temp:/etc/nginx/fastcgi_temp
-      - ./storage/nginx/uwsgi_temp:/etc/nginx/uwsgi_temp
     ports:
-      - "8080:8080"
+      - "8080:80"
     networks:
       - harbor
-
 
 networks:
   harbor:
