@@ -22,7 +22,7 @@ if [ ! -f "$TEMPLATE_FILE" ]; then
 fi
 
 # Substitute the placeholders with actual values and copy to the target location
-sed -e "s|{{WORKING_DIRECTORY}}|$WORKING_DIRECTORY|g" \
+sed -e "s|{{WORKDIR}}|$WORKDIR|g" \
     -e "s|{{USER}}|$USER|g" \
     -e "s|{{GROUP}}|$GROUP|g" \
     $TEMPLATE_FILE | sudo tee $TARGET_FILE > /dev/null
