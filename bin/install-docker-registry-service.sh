@@ -1,42 +1,39 @@
-usage() {
-  echo "Usage:"
-  echo " $0 <directory> <owner>"
-  exit 1
-}
+#!/bin/bash
 
-if [ -z "$1" ]
-  then WORKDIR=$(cwd)
-  else WORKDIR="$1"
+# Ensure the correct number of arguments are provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 WORKING_DIRECTORY USER"
+    exit 1
 fi
 
-WORKDIR=$(realpath "$WORKDIR")
+# Define the variables
+WORKING_DIRECTORY=$1
+USER=$2
+GROUP="docker"
 
-if [ ! -f "$WORKDIR/docker-compose.yml" ]; then
-  echo "Error: $WORKDIR/docker-compose.yml does not exist."
-  usage
-fi
-
-if [ -z "$2" ]
-  then OWNER="$USER"
-  else OWNER="$2"
-fi
-
-if [ -z "$OWNER" ]; then
-  echo "Error: Could not determine the owner to set."
-  usage
-fi
-
-TEMPLATE_FILE="$WORKDIR/templates/docker-registry.service"
+# Path to the template and target service file
+TEMPLATE_FILE="./templates/docker-registry.service"
 TARGET_FILE="/etc/systemd/system/docker-registry.service"
 
-sed -e "s|{{WORKDIR}}|$WORKDIR|g" \
-    -e "s|{{USER}}|$USER|g" \
-    -e "s|{{GROUP}}|docker|g" \
-    "$TEMPLATE_FILE" | sudo tee "$TARGET_FILE" > /dev/null
+# Check if the template file exists
+if [ ! -f "$TEMPLATE_FILE" ]; then
+    echo "Template file not found: $TEMPLATE_FILE"
+    exit 1
+fi
 
-sudo chmod 644 "$TARGET_FILE"
-sudo usermod -aG docker "$OWNER"
+# Substitute the placeholders with actual values and copy to the target location
+sed -e "s|{{WORKING_DIRECTORY}}|$WORKING_DIRECTORY|g" \
+    -e "s|{{USER}}|$USER|g" \
+    -e "s|{{GROUP}}|$GROUP|g" \
+    $TEMPLATE_FILE | sudo tee $TARGET_FILE > /dev/null
+
+# Set permissions and reload systemd
+sudo chmod 644 $TARGET_FILE
 sudo systemctl daemon-reload
+
+# Enable and start the service
 sudo systemctl enable docker-registry
 sudo systemctl start docker-registry
 
+# Check the status
+sudo systemctl status docker-registry.service
