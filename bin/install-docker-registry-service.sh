@@ -1,38 +1,50 @@
 #!/bin/bash
 
-# Ensure the correct number of arguments are provided
+error () {
+  echo -e "\e[31mError\e[0m"
+  if [ -n "$1" ]; then
+    echo -e "$1"
+  fi
+  echo -e  "Usage: $0 WORKDIR USER"
+  exit 1
+}
+
+SERVICE="docker-registry.service"
+
+echo "Installing $SERVICE"
+
 if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 WORKING_DIRECTORY USER"
-    exit 1
+    error
 fi
 
-# Define the variables
-WORKING_DIRECTORY=$1
-USER=$2
-GROUP="docker"
+# Check for working directory
+WORKDIR=$(realpath "$1")
+if [ ! -d "$WORKDIR" ]; then
+    error "Directory not found: $WORKDIR"
+fi
 
-# Path to the template and target service file
-TEMPLATE_FILE="./templates/docker-registry.service"
-TARGET_FILE="/etc/systemd/system/docker-registry.service"
 
-# Check if the template file exists
+# Check for template file
+TEMPLATE_FILE="$WORKDIR/templates/$SERVICE"
+TARGET_FILE="/etc/systemd/system/$SERVICE"
 if [ ! -f "$TEMPLATE_FILE" ]; then
-    echo "Template file not found: $TEMPLATE_FILE"
-    exit 1
+    error "Template file not found: $TEMPLATE_FILE"
 fi
 
-# Substitute the placeholders with actual values and copy to the target location
+# Verify user exists
+USER=$2
+if ! id "$USER" &>/dev/null; then
+    error "User not found: $USER"
+fi
+
+# Parse template to systemd service target file.
 sed -e "s|{{WORKDIR}}|$WORKDIR|g" \
     -e "s|{{USER}}|$USER|g" \
-    $TEMPLATE_FILE | sudo tee $TARGET_FILE > /dev/null
-
-# Set permissions and reload systemd
-sudo chmod 644 $TARGET_FILE
-sudo systemctl daemon-reload
+    "$TEMPLATE_FILE" | sudo tee "$TARGET_FILE" > /dev/null
+sudo chmod 644 "$TARGET_FILE"
 
 # Enable and start the service
+sudo systemctl daemon-reload
 sudo systemctl enable docker-registry
 sudo systemctl start docker-registry
-
-# Check the status
-sudo systemctl status docker-registry.service
+sudo systemctl status $SERVICE
