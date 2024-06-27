@@ -24,7 +24,6 @@ fi
 # Substitute the placeholders with actual values and copy to the target location
 sed -e "s|{{WORKDIR}}|$WORKDIR|g" \
     -e "s|{{USER}}|$USER|g" \
-    -e "s|{{GROUP}}|$GROUP|g" \
     $TEMPLATE_FILE | sudo tee $TARGET_FILE > /dev/null
 
 # Set permissions and reload systemd
