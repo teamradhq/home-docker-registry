@@ -105,3 +105,8 @@ However, there are some features that could be useful:
   - [ ] Mirrored from Dockerhub
   - [ ] Uploaded to the local registry
 
+## Registry API
+
+Refer to the [HTTP API V2](https://distribution.github.io/distribution/spec/api/) documentation.
+
+You can also refer to [`docs/registry-api.json`](docs/registry-api.json) which contains a list of titles and requests extracted from the documentation above.
