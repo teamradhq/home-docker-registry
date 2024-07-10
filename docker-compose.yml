@@ -15,5 +15,34 @@ services:
     volumes:
       - registry_data:/var/lib/registry
 
+  php:
+    container_name: php
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./php:/var/www/html
+    depends_on:
+      - registry
+    expose:
+      - 9000
+
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./php:/var/www/html
+    ports:
+      - "${NGINX_PUBLIC_PORT:-80}:80"
+    depends_on:
+      - php
+
 volumes:
   registry_data:

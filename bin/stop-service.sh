@@ -11,4 +11,4 @@ error () {
 
 cd "$CWD" || error "Directory $CWD does not exist."
 
-/usr/bin/docker compose -f "$CWD/docker-compose.yml" down || error "Failed to stop the registry service."
+/usr/bin/docker compose -f "$CWD/docker-compose.yml" down registry || error "Failed to stop the registry service."
