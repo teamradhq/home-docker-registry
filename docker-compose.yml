@@ -15,6 +15,23 @@ services:
     volumes:
       - registry_data:/var/lib/registry
 
+
+  mysql:
+    container_name: mysql
+    image: mysql:8
+    env_file:
+    - ./php/.env
+    environment:
+    - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+    - MYSQL_DATABASE=${MYSQL_DATABASE}
+    - MYSQL_USER=${MYSQL_USERNAME}
+    - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+    - "${MYSQL_PUBLIC_PORT:-3306}:3306"
+    volumes:
+    - ./docker/mysql/data:/var/lib/mysql
+
+
   php:
     container_name: php
     build:
