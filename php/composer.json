@@ -76,20 +76,20 @@
             "@composer stan:test"
         ],
         "stan:app": [
-            "@php vendor/bin/phpstan --configuration=config/phpstan.app.neon"
+            "@php vendor/bin/phpstan --configuration=phpstan.app.neon"
         ],
         "stan:test": [
-            "@php vendor/bin/phpstan --configuration=config/phpstan.test.neon"
+            "@php vendor/bin/phpstan --configuration=phpstan.test.neon"
         ],
         "stan:ci": [
             "@composer stan:ci:app",
             "@composer stan:ci:test"
         ],
         "stan:ci:app": [
-            "./bin/ci-report.sh coverage/quality.stan.app.json php -d memory_limit=2G vendor/bin/phpstan --configuration=config/phpstan.app.neon --no-progress --error-format=gitlab"
+            "./bin/ci-report.sh coverage/quality.stan.app.json php -d memory_limit=2G vendor/bin/phpstan --configuration=phpstan.app.neon --no-progress --error-format=gitlab"
         ],
         "stan:ci:test": [
-            "./bin/ci-report.sh coverage/quality.stan.test.json php -d memory_limit=2G vendor/bin/phpstan --configuration=config/phpstan.test.neon --no-progress --error-format=gitlab"
+            "./bin/ci-report.sh coverage/quality.stan.test.json php -d memory_limit=2G vendor/bin/phpstan --configuration=phpstan.test.neon --no-progress --error-format=gitlab"
         ],
         "quality": [
             "@composer pint:fix",
