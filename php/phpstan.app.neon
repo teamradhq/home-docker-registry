@@ -1,0 +1,8 @@
+parameters:
+  level: 8
+  paths:
+    - ./app
+    - ./bootstrap.php
+    - ./console
+  ignoreErrors:
+    - identifier: missingType.generics

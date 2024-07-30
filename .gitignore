@@ -2,3 +2,5 @@
 certs/*.crt
 certs/*.key
 tmp
+
+docker/mysql/data

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source "$(realpath "$(dirname "$0")")/bin/_run_in_php.sh"
+
+run_in_php composer "$@"
