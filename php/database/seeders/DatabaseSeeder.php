@@ -2,13 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Actions\Jetstream\AddTeamMember;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Laravel\Jetstream\Events\AddingTeamMember;
-use Laravel\Jetstream\Events\TeamMemberAdded;
-use Laravel\Jetstream\Jetstream;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,10 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->withPersonalTeam()->createOne([
+        User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
         ]);
+
+        User::factory(10)->create();
     }
 }
