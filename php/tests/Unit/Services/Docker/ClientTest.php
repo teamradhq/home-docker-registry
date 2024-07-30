@@ -1,50 +1,41 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Services\Docker;
 
 use App\Services\Docker\Client;
 use Illuminate\Support\Facades\Http;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\TestDox;
 use Tests\TestCase;
 
 class ClientTest extends TestCase
 {
     protected Client $client;
 
-    protected function setUp(): void
+    public static function methodProvider(): array
     {
-        parent::setUp();
-        $this->client = new Client();
+        return [
+            'GET' => ['get'],
+            'POST' => ['post'],
+            'PATCH' => ['patch'],
+            'PUT' => ['put'],
+            'DELETE' => ['delete'],
+        ];
     }
 
-    public function testVersionOk(): void
+    #[TestDox('The client should make a $_dataName request to the registry.')]
+    #[DataProvider('methodProvider')]
+    public function testGet(string $method): void
     {
-        $this->assertEquals('OK', $this->client->version());
-    }
+        Http::fake(function ($request) {
+            $this->assertStringStartsWith('http://registry:5000/v2/path', $request->url());
 
-    public function testVersionError(): void
-    {
-        Http::fake([
-            'http://registry:5000/v2/' => Http::response('', 500),
-        ]);
+            return Http::response('test');
+        });
+        $res = Client::$method('/path', ['query' => 'value']);
 
-        $this->assertEquals('ERROR - 500', $this->client->version());
-    }
-
-    public function testCatalogOk(): void
-    {
-        $catalog = $this->client->catalog();
-
-        $this->assertCount(0, $catalog['repositories']);
-    }
-
-    public function testCatalogError(): void
-    {
-        Http::fake([
-            'http://registry:5000/v2/_catalog' => Http::response('', 500),
-        ]);
-
-        $catalog = $this->client->catalog();
-
-        $this->assertEquals(['error' => 'ERROR - 500'], $catalog);
+        $this->assertEquals('test', $res->body());
     }
 }
