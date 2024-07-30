@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -34,6 +36,11 @@ class User extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->email === 'test@example.com' && $this->hasVerifiedEmail();
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -45,10 +52,5 @@ class User extends Authenticatable implements FilamentUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return $this->email === 'test@example.com' && $this->hasVerifiedEmail();
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories\Docker;
 
 use App\Models\Docker\Repository;
@@ -18,7 +20,7 @@ class RepositoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=> fake()->word,
+            'name' => fake()->word,
         ];
     }
 }

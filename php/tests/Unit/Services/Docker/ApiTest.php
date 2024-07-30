@@ -18,8 +18,8 @@ class ApiTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->client = new Client();
-        $this->api = new Api();
+        $this->client = new Client;
+        $this->api = new Api;
     }
 
     public function testVersionOk(): void

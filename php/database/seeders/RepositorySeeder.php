@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\Docker\Repository;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class RepositorySeeder extends Seeder
@@ -18,7 +19,7 @@ class RepositorySeeder extends Seeder
             ->hasTags(fake()->numberBetween(2, 25))
             ->create();
 
-        Repository::all()->each(function (Repository $repository) {
+        Repository::all()->each(function (Repository $repository): void {
             if (!$repository->tags->where('name', 'latest')->first()) {
                 $repository->tags()->create([
                     'name' => 'latest',
