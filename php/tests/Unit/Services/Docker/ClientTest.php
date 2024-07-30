@@ -34,7 +34,7 @@ class ClientTest extends TestCase
 
             return Http::response('test');
         });
-        $res = Client::$method('/path', ['query' => 'value']);
+        $res = Client::$method('/path');
 
         $this->assertEquals('test', $res->body());
     }

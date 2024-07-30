@@ -150,11 +150,14 @@
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/openspout/openspout" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/phpmyadmin/sql-parser" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/rector/rector" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/ryangjchandler/blade-capture-directive" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/spatie/color" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/spatie/invade" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/spatie/laravel-package-tools" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/symfony/html-sanitizer" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/vanta/gitlab-rector" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/violet/streaming-json-encoder" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

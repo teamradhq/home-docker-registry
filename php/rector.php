@@ -9,14 +9,17 @@ use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRect
 use Vanta\Integration\Rector\GitlabOutputFormatter;
 
 try {
-    $projectRoot = realpath(__DIR__ . '/..');
+    $projectRoot = realpath(__DIR__);
 
     return RectorConfig::configure()
         ->withPaths([
             $projectRoot . '/app',
-            $projectRoot . '/bootstrap.php',
+            $projectRoot . '/bootstrap',
             $projectRoot . '/config',
-            $projectRoot . '/console',
+            $projectRoot . '/database',
+            $projectRoot . '/public/index.php',
+            $projectRoot . '/resources/views',
+            $projectRoot . '/routes',
             $projectRoot . '/tests',
         ])
         ->withPhpSets()
