@@ -8,11 +8,9 @@
       <sourceFolder url="file://$MODULE_DIR$/php/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/php/vendor/bacon/bacon-qr-code" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/php/vendor/dasprid/enum" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/dflydev/dot-access-data" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/doctrine/lexer" />
@@ -27,13 +25,10 @@
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/guzzlehttp/uri-template" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/hamcrest/hamcrest-php" />
-      <excludeFolder url="file://$MODULE_DIR$/php/vendor/laravel/fortify" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/laravel/framework" />
-      <excludeFolder url="file://$MODULE_DIR$/php/vendor/laravel/jetstream" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/laravel/pint" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/laravel/prompts" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/laravel/sail" />
-      <excludeFolder url="file://$MODULE_DIR$/php/vendor/laravel/sanctum" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/laravel/serializable-closure" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/league/commonmark" />
@@ -42,7 +37,6 @@
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/league/flysystem-local" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/league/mime-type-detection" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/livewire/livewire" />
-      <excludeFolder url="file://$MODULE_DIR$/php/vendor/mobiledetect/mobiledetectlib" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/myclabs/deep-copy" />
@@ -52,7 +46,6 @@
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/nunomaduro/collision" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/nunomaduro/termwind" />
-      <excludeFolder url="file://$MODULE_DIR$/php/vendor/paragonie/constant_time_encoding" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/phar-io/manifest" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/phar-io/version" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/phpoption/phpoption" />
@@ -65,7 +58,6 @@
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/phpunit/php-text-template" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/phpunit/php-timer" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/phpunit/phpunit" />
-      <excludeFolder url="file://$MODULE_DIR$/php/vendor/pragmarx/google2fa" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/psr/clock" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/psr/event-dispatcher" />
@@ -130,7 +122,35 @@
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/php/storage/app" />
       <excludeFolder url="file://$MODULE_DIR$/php/storage/framework" />
-      <excludeFolder url="file://$MODULE_DIR$/php/vendor/_laravel_idea" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/anourvalar/eloquent-serialize" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/blade-ui-kit/blade-heroicons" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/blade-ui-kit/blade-icons" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/danharrin/date-format-converter" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/danharrin/livewire-rate-limiting" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/actions" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/filament" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/forms" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/infolists" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/notifications" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/support" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/tables" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/widgets" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/kirschbaum-development/eloquent-power-joins" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/league/csv" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/league/uri" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/league/uri-interfaces" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/masterminds/html5" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/openspout/openspout" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/ryangjchandler/blade-capture-directive" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/spatie/color" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/spatie/invade" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/spatie/laravel-package-tools" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/symfony/html-sanitizer" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
