@@ -10,6 +10,7 @@
         "ext-intl": "*",
         "ext-mysqli": "*",
         "ext-pdo": "*",
+        "ext-zip": "*",
         "ext-zlib": "*",
         "filament/filament": "^3.2",
         "laravel/framework": "^11.9",
