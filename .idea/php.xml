@@ -164,6 +164,7 @@
       <path value="$PROJECT_DIR$/php/vendor/rector/rector" />
       <path value="$PROJECT_DIR$/php/vendor/violet/streaming-json-encoder" />
       <path value="$PROJECT_DIR$/php/vendor/vanta/gitlab-rector" />
+      <path value="$PROJECT_DIR$/php/vendor/driftingly/rector-laravel" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

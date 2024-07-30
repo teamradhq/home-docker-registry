@@ -8,7 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/php/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/php/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/composer" />
@@ -133,6 +132,7 @@
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/doctrine/dbal" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/doctrine/deprecations" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/driftingly/rector-laravel" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/actions" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/filament" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/forms" />
