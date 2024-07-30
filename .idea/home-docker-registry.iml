@@ -122,6 +122,7 @@
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/php/storage/app" />
       <excludeFolder url="file://$MODULE_DIR$/php/storage/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/_laravel_idea" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/anourvalar/eloquent-serialize" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/blade-ui-kit/blade-heroicons" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/blade-ui-kit/blade-icons" />
