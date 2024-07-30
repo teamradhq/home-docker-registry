@@ -23,31 +23,49 @@ class Client
         $this->port = 5000;
     }
 
-    public static function get(string $path, $query = null): Response
+    /**
+     * @param  string|array<string, string>|null  $query
+     */
+    public static function get(string $path, string|array|null $query = null): Response
     {
         return (new self)->request($path, $query);
     }
 
-    public static function post(string $path, $data = []): Response
+    /**
+     * @param  string|array<string, string>|null  $data
+     */
+    public static function post(string $path, string|array|null $data = []): Response
     {
         return (new self)->request($path, $data, 'post');
     }
 
-    public static function patch(string $path, $data = []): Response
+    /**
+     * @param  string|array<string, string>|null  $data
+     */
+    public static function patch(string $path, string|array|null $data = []): Response
     {
         return (new self)->request($path, $data, 'patch');
     }
 
-    public static function put(string $path, $data = []): Response
+    /**
+     * @param  string|array<string, string>|null  $data
+     */
+    public static function put(string $path, string|array|null $data = []): Response
     {
         return (new self)->request($path, $data, 'put');
     }
 
-    public static function delete(string $path, $data = []): Response
+    /**
+     * @param  string|array<string, string>|null  $data
+     */
+    public static function delete(string $path, string|array|null $data = []): Response
     {
         return (new self)->request($path, $data, 'delete');
     }
 
+    /**
+     * @param  string|array<string, string>|null  $data
+     */
     private function request(string $path, array|string|null $data = [], string $method = 'get'): Response
     {
         return Http::{$this->method($method)}($this->uri($path), $data);

@@ -17,6 +17,9 @@ class Api
         return $this->error($status);
     }
 
+    /**
+     * @return array{error?: string, repositories?: string[]}
+     */
     public function catalog(): array
     {
         $response = Client::get('/_catalog');

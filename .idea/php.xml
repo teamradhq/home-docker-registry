@@ -159,6 +159,8 @@
       <path value="$PROJECT_DIR$/php/vendor/sebastian/version" />
       <path value="$PROJECT_DIR$/php/vendor/sebastian/cli-parser" />
       <path value="$PROJECT_DIR$/php/vendor/_laravel_idea" />
+      <path value="$PROJECT_DIR$/php/vendor/phpmyadmin/sql-parser" />
+      <path value="$PROJECT_DIR$/php/vendor/larastan/larastan" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

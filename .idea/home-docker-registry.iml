@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/php/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/php/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/composer" />
@@ -141,11 +142,13 @@
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/tables" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/filament/widgets" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/kirschbaum-development/eloquent-power-joins" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/larastan/larastan" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/league/csv" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/league/uri" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/league/uri-interfaces" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/masterminds/html5" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/openspout/openspout" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/phpmyadmin/sql-parser" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/psr/cache" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/ryangjchandler/blade-capture-directive" />
       <excludeFolder url="file://$MODULE_DIR$/php/vendor/spatie/color" />
